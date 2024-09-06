@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('loginAsStandardUser', () => {
+    cy.get('[data-test="username"]').type('standard_user')
+    cy.get('[data-test="password"]').type('secret_sauce')
+    cy.get('#login-button').click()
+
+    cy.get('.peek').should('exist') 
+    cy.get('.product_label').contains('Products')
+    cy.get('.inventory_item').should('have.length', 6)
+})

@@ -29,7 +29,11 @@ Cypress.Commands.add('loginAsStandardUser', () => {
     cy.get('[data-test="password"]').type('secret_sauce')
     cy.get('#login-button').click()
 
+    cy.checkInventoryPage()
+})
+
+Cypress.Commands.add('checkInventoryPage', () => {
     cy.get('.peek').should('exist') 
-    cy.get('.product_label').contains('Products')
+    cy.get('.product_label').should('have.text', 'Products')
     cy.get('.inventory_item').should('have.length', 6)
 })

@@ -114,4 +114,19 @@ describe('login feature', () => {
     cy.get('[data-test="username"]').should('exist')
     cy.get('[data-test="password"]').should('exist')
   })
+
+  it('should not be able to login with a locked out user', () => {
+
+    cy.get('[data-test="username"]').type('locked_out_user')
+    cy.get('[data-test="password"]').type('secret_sauce{enter}')
+    
+    cy.get('[data-test="error"]').should((el) => {
+      expect(el.children()).to.have.attr('class', 'error-button')
+      expect(el.text()).to.eq('Epic sadface: Username is required')
+    })
+    
+    cy.get('.error-button').should('exist').click()
+  })
+
+
 })

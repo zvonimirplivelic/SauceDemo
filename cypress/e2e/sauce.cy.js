@@ -4,10 +4,10 @@ describe('successful purchase', () => {
   
     beforeEach(() => {
         cy.visit('/index.html')
+        cy.loginAsStandardUser()
     })
     
     it('should complete a purchase', () => {
-      cy.loginAsStandardUser()
 
       // Add three items to the cart
       cy.get(':nth-child(1) > .pricebar > .btn_primary').click()

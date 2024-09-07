@@ -119,10 +119,10 @@ describe('login feature', () => {
 
     cy.get('[data-test="username"]').type('locked_out_user')
     cy.get('[data-test="password"]').type('secret_sauce{enter}')
-    
+
     cy.get('[data-test="error"]').should((el) => {
       expect(el.children()).to.have.attr('class', 'error-button')
-      expect(el.text()).to.eq('Epic sadface: Username is required')
+      expect(el.text()).to.eq('Epic sadface: Sorry, this user has been locked out.')
     })
     
     cy.get('.error-button').should('exist').click()

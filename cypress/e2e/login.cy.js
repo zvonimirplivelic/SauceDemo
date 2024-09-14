@@ -127,6 +127,4 @@ describe('login feature', () => {
     
     cy.get('.error-button').should('exist').click()
   })
-
-
 })

@@ -37,3 +37,17 @@ Cypress.Commands.add('checkInventoryPage', () => {
     cy.get('.product_label').should('have.text', 'Products')
     cy.get('.inventory_item').should('have.length', 6)
 })
+
+Cypress.Commands.add('goToCheckoutForm', () => {
+    cy.loginAsStandardUser()
+
+    cy.get(':nth-child(1) > .pricebar > .btn_primary').click()
+    cy.get(':nth-child(3) > .pricebar > .btn_primary').click()
+    cy.get(':nth-child(6) > .pricebar > .btn_primary').click()
+
+    cy.get('#shopping_cart_container').click()
+
+    cy.get('.btn_action').should('contain', "CHECKOUT").click()
+
+    cy.get('.subheader').should('have.text', 'Checkout: Your Information')
+})

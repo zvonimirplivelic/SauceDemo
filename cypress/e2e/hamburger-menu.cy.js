@@ -103,6 +103,7 @@ describe('hamburger menu tests', () => {
         cy.get('.fa-layers-counter').should('not.exist')
 
         // Additionally the states on item buttons dont change. It stays at REMOVE
-
     })
+
+    // No test for the logout, this test is located in login.cy.js
 })

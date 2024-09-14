@@ -99,6 +99,7 @@ describe('login feature', () => {
     cy.get('[data-test="username"]').type('standard_user')
     cy.get('[data-test="password"]').type('secret_sauce{enter}')
 
+    cy.location('pathname').should('match', /v1\/inventory.html/);
     cy.get('.peek').should('exist') 
     cy.get('.product_label').contains('Products')
     cy.get('.inventory_item').should('have.length', 6)
@@ -113,6 +114,9 @@ describe('login feature', () => {
     
     cy.get('[data-test="username"]').should('exist')
     cy.get('[data-test="password"]').should('exist')
+
+    cy.location('pathname').should('match', /v1\/index.html/);
+
   })
 
   it('should not be able to login with a locked out user', () => {

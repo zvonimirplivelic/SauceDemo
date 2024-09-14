@@ -19,6 +19,7 @@ describe('checkout form', () => {
             expect(button).to.have.value('CONTINUE')
         }).click()
 
+        cy.location('pathname').should('match', /v1\/checkout-step-two.html/);
         cy.get('.subheader').should('have.text', 'Checkout: Overview')
         cy.get('.fa-layers-counter').should('have.text', 3)
         cy.get('.cart_item').should('have.length', 3)
@@ -116,6 +117,8 @@ describe('checkout form', () => {
     it('should return to cart when pressing cancel', () => {
 
         cy.get('.cart_cancel_link').click()
+
+        cy.location('pathname').should('match', /v1\/cart.html/);
         cy.get('.subheader').should('have.text', 'Your Cart')
         cy.get('.fa-layers-counter').should('have.text', 3)
         cy.get('.cart_item').should('have.length', 3)

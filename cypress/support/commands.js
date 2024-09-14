@@ -33,6 +33,8 @@ Cypress.Commands.add('loginAsStandardUser', () => {
 })
 
 Cypress.Commands.add('checkInventoryPage', () => {
+    cy.location('pathname').should('match', /v1\/inventory.html/);
+
     cy.get('.peek').should('exist') 
     cy.get('.product_label').should('have.text', 'Products')
     cy.get('.inventory_item').should('have.length', 6)
@@ -50,4 +52,6 @@ Cypress.Commands.add('goToCheckoutForm', () => {
     cy.get('.btn_action').should('contain', "CHECKOUT").click()
 
     cy.get('.subheader').should('have.text', 'Checkout: Your Information')
+    cy.location('pathname').should('match', /v1\/checkout-step-one.html/)
+
 })
